@@ -26,20 +26,23 @@
 						</ul>
 					</div>
 
-				<!-- Header
-					<header id="header">
-						<a href="index.html" class="logo">this is ying wong</a>
-					</header> -->
-
 				<!-- Nav -->
 					<nav id="nav">
 						<ul class="links">
-							<li class="active"><a href="index.html">Portfolio</a></li>
+							<li class="dropdown active">
+								<a href="index.html">Portfolio</a>
+								<ul class="dropdown-menu">
+									<li><a href="#experiences" class="scrolly">Experiences</a></li>
+									<li><a href="#chatbot" class="scrolly">Ask YingBot</a></li>
+									<li><a href="#research" class="scrolly">Research</a></li>
+									<li><a href="#projects-show" class="scrolly">Projects</a></li>
+								</ul>
+							</li>
+							<li><a href="research.html">more Research</a></li>
 							<li><a href="hobbies.html">Hobbies</a></li>
-							<li><a href="research.html">Research</a></li>
 						</ul>
 						<ul class="icons">
-							<li><a href="https://www.linkedin.com/in/qywong03/" class="icon brands fa-linkedin"><span class="label">Twitter</span></a></li>
+							<li><a href="https://www.linkedin.com/in/qywong03/" class="icon brands fa-linkedin"><span class="label">linkedin</span></a></li>
 							<li><a href="https://github.com/wqying" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
 						</ul>
 					</nav>
@@ -60,61 +63,178 @@
 								</ul>
 							</article>
 
+						<!-- Experiences Section -->
+                        <section id="experiences" class="post">
+                            <header class="major">
+                                <h2>notable Experiences</h2>
+                                <hr class="section-divider" />
+                            </header>
+
+								<!-- Professional Experience Cards -->
+                                <div class="posts">
+                                    <!-- Experience Card 1 -->
+									<article>
+										<header>
+											<h4>AI CAD Intern</h4>
+											<p><strong>Advanced Micro Devices (AMD)</strong></p>
+											<p style="opacity: 0.75; font-size: 0.9rem;">June 2025 – September 2025</p>
+										</header>
+
+										<p>I engineered and deployed an internal LLM-powered automation agent that streamlined CAD workflows across the organization.</p>
+
+										<div class="skill-tags">
+											<span class="skill-tag">Python</span>
+											<span class="skill-tag">LLMs</span>
+											<span class="skill-tag">AgenticAI</span>
+											<span class="skill-tag">Jenkins</span>
+											<span class="skill-tag">MongoDB</span>
+											<span class="skill-tag">DevOps</span>
+											<span class="skill-tag">Software Architecture</span>
+										</div>
+									</article>
+
+									<!-- Experience Card 2 -->
+									<article>
+										<header>
+											<h4>Undergraduate Research Assistant</h4>
+											<p><strong>UCI Cognitive Anteater Robotics Lab (CARL)</strong></p>
+											<p style="opacity: 0.75; font-size: 0.9rem;">June 2024 – Present</p>
+										</header>
+
+										<p>I designed the full simulation pipeline and cognitive architecture for a neurorobot using reinforcement learning and episodic-like memory modeling.</p>
+
+										<div class="skill-tags">
+											<span class="skill-tag">Reinforcement Learning</span>
+											<span class="skill-tag">Computational Modeling</span>
+											<span class="skill-tag">Python</span>
+											<span class="skill-tag">ROS2</span>
+											<span class="skill-tag">Nav2</span>
+											<span class="skill-tag">SLAM</span>
+											<span class="skill-tag">Algorithm Design</span>
+										</div>
+									</article>
+
+									<!-- Experience Card 2 -->
+									 <article>
+										<header>
+											<h4>Learning Assistant</h4>
+											<p><strong>Donald Bren School of Information & Computer Science</strong></p>
+											<p style="opacity: 0.75; font-size: 0.9rem;">March 2025 – Present</p>
+										</header>
+
+										<p>I supported students in mastering debugging, clean code principles, and algorithmic thinking in Python software engineering.</p>
+
+										<div class="skill-tags">
+											<span class="skill-tag">Python</span>
+											<span class="skill-tag">Debugging</span>
+											<span class="skill-tag">Software Engineering</span>
+											<span class="skill-tag">Teaching</span>
+											<span class="skill-tag">Algorithms</span>
+										</div>
+									</article>
+                                </div>
+                            <!-- </section> -->
+
+                                <!-- Extracurricular Experience Cards -->
+                                <div class="posts">
+                                    <!-- Experience Card 1 -->
+                                    <article>
+										<header>
+											<h4>Corporate Outreach Committee</h4>
+											<p><strong>ICS Student Council</strong></p>
+											<p style="opacity: 0.75; font-size: 0.9rem;">November 2025 – Present</p>
+										</header>
+
+										<p>I build partnerships with tech companies to bring professional development opportunities to UCI's ICS student community.</p>
+
+										<div class="skill-tags">
+											<span class="skill-tag">Industry Outreach</span>
+											<span class="skill-tag">Communication</span>
+											<span class="skill-tag">Partnership Development</span>
+										</div>
+									</article>
+
+									<!-- Experience Card 2 -->
+									<article>
+										<header>
+											<h4>Chief Technology Officer</h4>
+											<p><strong>Cognitive Science Association at UCI</strong></p>
+											<p style="opacity: 0.75; font-size: 0.9rem;">June 2024 – Present</p>
+										</header>
+
+										<p>I maintain the association’s technical infrastructure and streamline digital workflows.</p>
+
+										<div class="skill-tags">
+											<span class="skill-tag">HTML/CSS</span>
+											<span class="skill-tag">Web Management</span>
+											<span class="skill-tag">Technical Leadership</span>
+										</div>
+									</article>
+                                </div>
+                            </section>
+                        </section>
+
 						<!-- Chatbot Section -->
-							<section id="chatbot" class="post">
-								<header class="major">
-									<h2>Ask Ying!</h2>
+						<section id="chatbot" class="post">
+							<header class="major">
+								<h2>Ask YingBot!</h2>
+								<hr class="section-divider" />
+								<p>Talk to an AI version of me! Feel free to ask YingBot any questions about my background!</p>
+							</header>
+							<ul class="actions special">
+								<li><a id="launch-chatbot" class="button">Talk to YingBot</a></li>
+							</ul>
+							<span id ="special_img" class="image fit">
+								<img src="images/best_pfp.JPG" alt="AI Chatbot Thumbnail" />
+							</span>
+
+							<!-- Gradio embed -->
+							<div class="chatbot-container">
+								<iframe
+									src="https://qyw03-career-convo.hf.space"
+									width="100%"
+									height="780"
+									frameborder="0"
+								></iframe>
+							</div>
+						</section>
+
+						<!-- Research Intro Section -->
+						<section id="research" class="post">
+									<header class="major">
+									<h2>Research</h2>
 									<hr class="section-divider" />
-									<p>Talk to an AI version of me! This YingBot knows about my background, feel free to ask it any questions about me!</p>
+									<p>My research on AI and robotics conducted at the Cognitive Anteater Robotics Lab (CARL) at UC Irvine under Dr. Jeffrey Krichmar.</p>
+									<p>Paper accepted for publication at Scientific Reports. In the meantime, 
+										pre-print available here: <a href="https://doi.org/10.1101/2025.09.03.674043" target="_blank" rel="noopener noreferrer">Episodic-like Memory in a Simulation of Cuttlefish Behavior</a></p>
 								</header>
 								<ul class="actions special">
-									<li><a id="launch-chatbot" class="button">Talk to YingBot</a></li>
+								<li><a href="research.html"class="button">Learn More</a></li>
 								</ul>
-								<span class="image fit">
-									<img src="images/best_pfp.JPG" alt="AI Chatbot Thumbnail" />
-								</span>
+								<span id ="special_img" class="image fit"><img src="images/project_research_placeholder.jpg" alt="Research Project Thumbnail" /></span>
+						</section>
 
-								<!-- Gradio embed -->
-								<div class="chatbot-container">
-									<iframe
-										src="https://qyw03-career-convo.hf.space"
-										width="100%"
-										height="780"
-										frameborder="0"
-									></iframe>
-								</div>
-							</section>
+						<!-- Projects Section -->
+						<section id="projects-show" class="post">
+                            <header class="major">
+                                <h2>side Projects showcase</h2>
+                            </header>
+						</section>
 
-						<!-- Posts -->
-							<section id="projects" class="posts">
-
-								<!-- Project 1: Research Papers + Robot -->
-								<article>
+								<!-- Projects -->
+								<section id="projects" class="posts">
+									<article>
 									<header>
-										<h2>Artificial Intelligence Research</h2>
+										<h2>Vestige</h2>
 										<hr class="section-divider" />
 									</header>
-									<a class="image fit"><img src="images/project_research_placeholder.jpg" alt="Research Project Thumbnail" /></a>
-									<p>My research on cognitive robotics conducted at the Cognitive Anteater Robotics Lab (CARL) at UC Irvine under Dr. Jeffrey Krichmar.</p>
+									<a class="image fit"><img src="images/project_vestige_placeholder.gif" alt="Vestige Thumbnail" /></a>
+									<a class="image fit"><img src="images/ves.gif" alt="Vestige Thumbnail" /></a>
+									<p>A narrative exploration game focused on element manipulation and visual storytelling. I was the UI/UX and game designer. Made in Unity. </p>
 									<ul class="actions special">
-										<li><a href="research.html" class="button">Learn More</a></li>
+										<li><a href="https://sturmdesign.itch.io/vestige" class="button">Download from itch.io</a></li>
 									</ul>
 								</article>
-
-								<!-- Project 2: Flappy Petr -->
-								<article>
-									<header>
-										<h2>Flappy Petr</h2>
-										<hr class="section-divider" />
-									</header>
-									<a class="image fit"><img src="images/project_flappy_placeholder.gif" alt="Flappy Petr Thumbnail" /></a>
-									<p>A chaotic, fast-paced Flappy Bird–style game created in Unity. Part of a hackathon project.</p>
-									<ul class="actions special">
-										<li><a href="https://sadlemur.itch.io/flappypeter" class="button">Play on itch.io</a></li>
-									</ul>
-								</article>
-
-								<!-- Project 3: One Boss Left -->
 								<article>
 									<header>
 										<h2>One Boss Left</h2>
@@ -127,23 +247,21 @@
 										<li><a href="https://serperior1700.itch.io/one-boss-left-team-c" class="button">Download from itch.io</a></li>
 									</ul>
 								</article>
-
-								<!-- Project 4: Vestige -->
-								<article>
+									<article>
 									<header>
-										<h2>Vestige</h2>
+										<h2>Flappy Petr</h2>
 										<hr class="section-divider" />
 									</header>
-									<a class="image fit"><img src="images/project_vestige_placeholder.gif" alt="Vestige Thumbnail" /></a>
-									<a class="image fit"><img src="images/ves.gif" alt="Vestige Thumbnail" /></a>
-									<p>A narrative exploration game focused on element manipulation and visual storytelling. I was the UI/UX and game designer. Made in Unity. </p>
+									<a class="image fit"><img src="images/project_flappy_placeholder.gif" alt="Flappy Petr Thumbnail" /></a>
+									<p>A chaotic, fast-paced Flappy Bird–style game created in Unity. Part of a hackathon project.</p>
 									<ul class="actions special">
-										<li><a href="https://sturmdesign.itch.io/vestige" class="button">Download from itch.io</a></li>
+										<li><a href="https://sadlemur.itch.io/flappypeter" class="button">Play on itch.io</a></li>
 									</ul>
 								</article>
-
+								</section>
 							</section>
 						</div>
+
 				<!-- Footer -->
 					<footer id="footer">
 						<section class="split contact">

@@ -27,17 +27,25 @@
             </div>
 
             <!-- Nav -->
-            <nav id="nav">
-                <ul class="links">
-                    <li><a href="index.html">Portfolio</a></li>
-                    <li><a href="hobbies.html">Hobbies</a></li>
-                    <li class="active"><a href="research.html">Research</a></li>
-                </ul>
-                <ul class="icons">
-                    <li><a href="https://www.linkedin.com/in/qywong03/" class="icon brands fa-linkedin"></a></li>
-                    <li><a href="https://github.com/wqying" class="icon brands fa-github"></a></li>
-                </ul>
-            </nav>
+                <nav id="nav">
+                    <ul class="links">
+                        <li class="dropdown active">
+                            <a href="index.html">Portfolio</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="index.html#experiences" class="scrolly">Experiences</a></li>
+                                <li><a href="index.html#chatbot" class="scrolly">Ask YingBot</a></li>
+                                <li><a href="index.html#research" class="scrolly">Research</a></li>
+                                <li><a href="index.html#projects-show" class="scrolly">Projects</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="research.html">more Research</a></li>
+                        <li><a href="hobbies.html">Hobbies</a></li>
+                    </ul>
+                    <ul class="icons">
+                        <li><a href="https://www.linkedin.com/in/qywong03/" class="icon brands fa-linkedin"><span class="label">linkedin</span></a></li>
+                        <li><a href="https://github.com/wqying" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+                    </ul>
+                </nav>
 
             <!-- Main -->
             <div id="main">
@@ -46,6 +54,7 @@
                 <section class="post">
                     <header class="major">
                         <h2>The CuttleBot 2.0 Project</h2>
+                        <hr class="section-divider" />
                     </header>
 
                     <p>
@@ -59,33 +68,21 @@
                             <img src="images/urop.png" alt="Overview Placeholder" />
                         </span>
                     </a>
-
                 </section>
 
                 <!-- --- SECTION 2: My Role --- -->
                 <section class="post">
                     <header class="major">
                         <h2>My Role</h2>
+                        <hr class="section-divider" />
                     </header>
-
                     <p>
-                        My primary contribution to the CuttleBot 2.0 project was the design and 
-                        development of the entire simulation pipeline used to model the neurorobot’s 
-                        episodic-like memory, foraging behavior, and reinforcement learning architecture. 
-                        I translated biological principles from cephalopod cognition into a computational 
-                        framework that could be tested, analyzed, and eventually deployed onto the physical 
-                        robot. My work sat at the intersection of cognitive science and AI/ML, focusing on 
-                        building systems that learn, adapt, and make context-sensitive decisions.
-                    </p>
-
-                    <ul>
-                        <li>Designed and implemented the full 16×16 grid-world simulation environment modeling prey, predators, and foraging regions.</li>
-                        <li>Built the Q-learning architecture and integrated it with a biologically inspired “what-where-when” episodic-like memory model.</li>
-                        <li>Developed the agent’s decision-making logic, action set, reward functions, hunger system, and softmax exploration policy.</li>
-                        <li>Implemented all five experimental scenarios and encoded environmental dynamics such as prey respawning and predator regions.</li>
-                        <li>Created behavioral metrics, data-logging tools, and visualization scripts to analyze learning, foraging rates, timing behavior, and risk-taking.</li>
-                        <li>Worked with the physical TurtleBot4 platform and contributed to robotics integration for future deployment.</li>
-                    </ul>
+                        I designed and built the full simulation pipeline for the CuttleBot 2.0 project, including the 16×16 grid-world environment,
+                        biologically inspired episodic-like memory system, and integrated Q-learning architecture that governs the agent’s decision-making.
+                        I implemented all experimental scenarios, reward structures, prey and predator behaviors, and analysis tools for evaluating foraging patterns,
+                        learning curves, and risk sensitivity. I also contributed to the physical deployment by setting up ROS2, SLAM,
+                        and Nav2 to prepare the neurorobot for real-world autonomous foraging tests.
+                        </p>
                         <span class="image fit">
                         <img src="images/Hypnosis.gif" alt="Overview Placeholder" />
                     </span>
@@ -95,6 +92,7 @@
                 <section class="post">
                     <header class="major">
                         <h2>Technical Summary</h2>
+                        <hr class="section-divider" />
                     </header>
 
                     <p>
@@ -117,7 +115,7 @@
                         Decision-making is governed by a <strong>Q-learning algorithm</strong> built around a 
                         high-dimensional state space including position, heading direction, hunger level, and 
                         temporal context. The agent selects actions through a softmax policy that balances 
-                        exploration and exploitation. Rewards for capturing prey, penalties for predator 
+                        exploration and exploitation. More reward for capturing shrimp and less for crab (less desirable), penalties for predator 
                         encounters, and hunger-based modifiers enable the emergence of selective, 
                         opportunistic, and risky foraging behaviors.
                     </p>
@@ -146,6 +144,7 @@
                 <section class="post">
                 <header class="major">
                     <h2>Simulation Results</h2>
+                    <hr class="section-divider" />
                 </header>
 
                 <p>
@@ -185,12 +184,13 @@
                 <!-- --- SECTION 5: Publications, Posters, Talks --- -->
                 <section class="post">
                     <header class="major">
-                        <h2>Presentations and Pre-print</h2>
+                        <h2>Presentations and Publications</h2>
+                        <hr class="section-divider" />
                     </header>
 
-                    <p>This project was rewarded a $3000 grant from UROP and Calit2 and I presented at UCI UROP Symposium 2025, UCI Cognitive Science Department Honors Symposium</p>
+                    <p>This project was rewarded a <strong>$3000</strong> grant from UROP and Calit2 and I presented at UCI UROP Symposium 2025, UCI Cognitive Science Department Honors Symposium</p>
                     <p>I co-authored the paper "Episodic-Like Memory in a Simulation of Cuttlefish Behavior", which focuses on the computational model aspect of the CuttleBot 2.0 project.
-                        The pre-print is readily available on BioRxiv, and the paper has been accepted for publication in the Scientific Reports journal.</p>
+                        The pre-print is readily available on BioRxiv, and the paper has been accepted for <strong>publication</strong> in the <strong>Scientific Reports</strong> journal.</p>
 
                     <ul class="actions special">
                         <li><a href="https://www.biorxiv.org/content/10.1101/2025.09.03.674043v1" class="button">View pre-print</a></li>
@@ -203,6 +203,7 @@
                 <section class="post">
                     <header class="major">
                         <h2>Code Repositories</h2>
+                        <hr class="section-divider" />
                     </header>
 
                     <p>Code for the computational model available on GitHub.</p>
