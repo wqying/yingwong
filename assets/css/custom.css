@@ -27,6 +27,7 @@
 }
 
 /* images */
+/* parent (span) */
 .special-img {
     display: block;
     width: min(100%, 32rem);
@@ -36,17 +37,35 @@
 .smaller-img {
     width: min(100%, 10rem);
     margin: 0 auto 2rem;
+    display: block;
 }
 
+/* child (image) */
 .special-img img,
 .smaller-img img {
     display: block;
     width: 100%;
-    /* aspect-ratio: 1 / 1;
-    object-fit: cover;
-    object-position: center; */
     height: auto;
     border-radius: 6px;
+}
+
+/* Embedded resume */
+.resume-embed {
+    display: block;
+    width: 100%;
+    height: 80vh;
+    min-height: 36rem;
+    margin: 0 0 2rem;
+    border: 1px solid rgba(255, 230, 200, 0.15);
+    border-radius: 6px;
+    background: #ffffff;
+}
+
+@media screen and (max-width: 736px) {
+    .resume-embed {
+        height: 70vh;
+        min-height: 28rem;
+    }
 }
 
 /* Chatbot container visual style */
