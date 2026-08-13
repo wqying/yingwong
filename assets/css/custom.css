@@ -30,13 +30,13 @@
 /* parent (span) */
 .special-img {
     display: block;
-    width: min(100%, 32rem);
+    width: min(100%, 50rem);
     margin: 0 auto 2rem;
 }
 
 .smaller-img {
     display: block;
-    width: min(100%, 28rem);
+    width: min(100%, 36rem);
     margin: 0 auto 2rem;
 }
 
