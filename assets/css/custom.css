@@ -26,23 +26,26 @@
     display: none;
 }
 
-#special_img {
-    max-width: 500px;
-    width: 100%;
-    height: auto;
-    margin: 0 auto;
+/* images */
+.special-img {
     display: block;
-    object-fit: cover;
-    border-radius: 6px;
+    width: min(100%, 32rem);
+    margin: 0 auto 2rem;
 }
 
-#smaller_img {
-    max-width: 200px;
-    width: 100%;
-    height: auto;
-    margin: 0 auto;
+.smaller-img {
+    width: min(100%, 10rem);
+    margin: 0 auto 2rem;
+}
+
+.special-img img,
+.smaller-img img {
     display: block;
+    width: 100%;
+    /* aspect-ratio: 1 / 1;
     object-fit: cover;
+    object-position: center; */
+    height: auto;
     border-radius: 6px;
 }
 
