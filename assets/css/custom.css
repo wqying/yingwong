@@ -36,7 +36,7 @@
 
 .smaller-img {
     display: block;
-    width: min(100%, 36rem);
+    width: min(100%, 25rem);
     margin: 0 auto 2rem;
 }
 
