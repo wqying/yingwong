@@ -1,64 +1,520 @@
 /* =========================================================
-   GLOBAL OVERRIDES & FIXES
+   WUXIA THEME — ink on xuan paper
+   Layered over the HTML5 UP "Massively" base (main.css).
+
+   Palette
+     paper     #e8e6db   unsized xuan paper
+     ink       #16191a   pine-soot ink, full strength
+     wash      #4d5756   the same ink, diluted
+     mist      #b7c2bd   celadon haze between ridges
+     cinnabar  #b3261e   seal paste — the only colour, used rarely
+
+   Type
+     Ma Shan Zheng  brush script, for the name and section titles
+     Yuji Syuku     brush-cut serif, for small headings and controls
+     Kaisei Tokumin body text
    ========================================================= */
 
-#experiences p,
-#experiences article p,
-#experiences article header p,
-#experiences article header h4,
-#experiences article header h2 {
-    margin: 1rem 0 !important;
-    line-height: 1.25 !important;
+/* Brush shapes and paper grain, as inline SVG so they work from any host */
+:root {
+    --brush-button: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 240 56%22 preserveAspectRatio=%22none%22%3E%3Cpath fill-rule=%22evenodd%22 d=%22M0.0 28.0L6.7 10.0L13.3 1.3L20.0 4.7L26.7 3.8L33.3 3.5L40.0 1.4L46.7 4.3L53.3 2.4L60.0 4.7L66.7 5.4L73.3 2.8L80.0 3.5L86.7 5.1L93.3 5.1L100.0 3.8L106.7 1.3L113.3 0.7L120.0 1.8L126.7 3.2L133.3 5.2L140.0 1.5L146.7 1.1L153.3 0.5L160.0 4.9L166.7 3.7L173.3 5.3L180.0 1.2L186.7 2.8L193.3 0.2L200.0 3.5L206.7 4.1L213.3 4.1L220.0 3.2L226.7 2.1L233.3 6.9L240.0 27.8L240.0 27.8L233.3 50.0L226.7 54.2L220.0 53.8L213.3 54.6L206.7 55.6L200.0 52.1L193.3 52.2L186.7 53.7L180.0 50.5L173.3 53.7L166.7 52.9L160.0 53.4L153.3 54.5L146.7 52.4L140.0 52.4L133.3 53.5L126.7 51.9L120.0 50.8L113.3 53.5L106.7 51.5L100.0 51.4L93.3 51.0L86.7 52.0L80.0 52.4L73.3 54.1L66.7 52.4L60.0 55.1L53.3 53.8L46.7 52.3L40.0 51.1L33.3 51.8L26.7 53.2L20.0 52.2L13.3 50.4L6.7 48.4L0.0 28.1Z%22/%3E%3C/svg%3E");
+    --brush-rule: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 14%22 preserveAspectRatio=%22none%22%3E%3Cpath fill-rule=%22evenodd%22 d=%22M0.0 7.3L11.1 5.0L22.2 5.0L33.3 4.0L44.4 2.8L55.6 3.0L66.7 2.1L77.8 2.4L88.9 3.5L100.0 3.4L111.1 2.2L122.2 1.4L133.3 0.4L144.4 2.7L155.6 1.7L166.7 1.7L177.8 -0.1L188.9 1.4L200.0 1.0L211.1 0.8L222.2 2.3L233.3 0.7L244.4 1.7L255.6 0.3L266.7 1.7L277.8 -0.2L288.9 2.3L300.0 2.5L311.1 3.2L322.2 1.1L333.3 2.5L344.4 1.8L355.6 3.2L366.7 3.5L377.8 4.1L388.9 5.0L400.0 7.3L400.0 7.0L388.9 8.9L377.8 9.4L366.7 10.6L355.6 10.3L344.4 11.2L333.3 11.6L322.2 12.1L311.1 10.9L300.0 11.0L288.9 10.7L277.8 12.8L266.7 10.7L255.6 13.1L244.4 13.5L233.3 12.5L222.2 13.4L211.1 12.8L200.0 12.2L188.9 11.0L177.8 13.1L166.7 13.2L155.6 14.0L144.4 13.2L133.3 12.1L122.2 13.7L111.1 10.9L100.0 13.0L88.9 12.3L77.8 11.4L66.7 11.3L55.6 11.3L44.4 10.6L33.3 10.2L22.2 9.2L11.1 7.9L0.0 7.1ZM298.8 5.3L398.0 5.1L398.0 5.7ZM264.5 7.1L398.0 6.9L398.0 7.6ZM301.6 7.8L398.0 7.6L398.0 8.2ZM248.5 7.6L398.0 7.4L398.0 8.1Z%22/%3E%3C/svg%3E");
+    --brush-band: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 60%22 preserveAspectRatio=%22none%22%3E%3Cpath fill-rule=%22evenodd%22 d=%22M0.0 29.7L15.0 13.4L30.0 6.0L45.0 2.4L60.0 3.3L75.0 3.3L90.0 1.3L105.0 2.3L120.0 3.4L135.0 -0.1L150.0 2.6L165.0 3.0L180.0 1.9L195.0 1.6L210.0 0.7L225.0 3.2L240.0 3.4L255.0 1.7L270.0 2.5L285.0 3.2L300.0 3.2L315.0 2.0L330.0 2.3L345.0 1.3L360.0 2.3L375.0 3.1L390.0 0.2L405.0 1.7L420.0 1.4L435.0 1.2L450.0 0.0L465.0 0.6L480.0 3.0L495.0 2.7L510.0 1.6L525.0 0.7L540.0 2.1L555.0 0.9L570.0 1.9L585.0 2.7L600.0 2.3L615.0 1.3L630.0 2.7L645.0 0.8L660.0 2.2L675.0 2.8L690.0 3.1L705.0 1.7L720.0 1.5L735.0 1.2L750.0 3.0L765.0 2.2L780.0 1.8L795.0 1.5L810.0 3.4L825.0 2.1L840.0 2.7L855.0 2.4L870.0 0.9L885.0 3.3L900.0 3.1L915.0 0.8L930.0 2.8L945.0 3.1L960.0 1.6L975.0 1.1L990.0 2.2L1005.0 2.3L1020.0 2.6L1035.0 0.9L1050.0 3.2L1065.0 2.6L1080.0 3.0L1095.0 2.6L1110.0 1.2L1125.0 2.0L1140.0 3.3L1155.0 3.4L1170.0 0.5L1185.0 8.9L1200.0 29.9L1200.0 29.9L1185.0 51.6L1170.0 58.2L1155.0 57.7L1140.0 60.2L1125.0 58.8L1110.0 58.2L1095.0 57.1L1080.0 57.5L1065.0 58.0L1050.0 59.4L1035.0 59.2L1020.0 58.9L1005.0 57.4L990.0 59.4L975.0 56.4L960.0 57.0L945.0 58.4L930.0 58.5L915.0 56.5L900.0 57.5L885.0 59.1L870.0 56.5L855.0 56.9L840.0 57.7L825.0 59.1L810.0 58.6L795.0 57.1L780.0 58.8L765.0 59.9L750.0 57.9L735.0 59.8L720.0 57.0L705.0 58.4L690.0 58.0L675.0 58.4L660.0 59.0L645.0 57.3L630.0 59.7L615.0 60.0L600.0 58.8L585.0 57.2L570.0 59.6L555.0 57.9L540.0 57.2L525.0 57.1L510.0 60.2L495.0 58.5L480.0 59.6L465.0 57.8L450.0 57.0L435.0 57.4L420.0 57.4L405.0 59.4L390.0 58.7L375.0 57.0L360.0 57.7L345.0 58.5L330.0 59.4L315.0 57.3L300.0 60.0L285.0 58.2L270.0 60.1L255.0 57.2L240.0 58.1L225.0 58.2L210.0 56.9L195.0 56.5L180.0 57.9L165.0 59.3L150.0 59.0L135.0 59.6L120.0 58.5L105.0 57.6L90.0 57.9L75.0 59.1L60.0 57.0L45.0 58.9L30.0 56.3L15.0 46.7L0.0 29.8Z%22/%3E%3C/svg%3E");
+    --seal-shape: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22 preserveAspectRatio=%22none%22%3E%3Cmask id=%22m%22%3E%3Cpath d=%22M0.0 0.4L4.6 0.2L9.1 0.6L13.7 0.2L18.3 0.1L22.9 0.6L27.4 1.5L32.0 1.3L36.6 1.2L41.1 0.4L45.7 0.9L50.3 0.4L54.9 0.3L59.4 0.2L63.7 0.0L62.5 4.6L62.7 9.1L62.7 13.7L62.7 18.3L63.7 22.9L63.5 27.4L63.0 32.0L62.8 36.6L62.6 41.1L62.6 45.7L63.9 50.3L63.0 54.9L62.9 59.4L64.0 63.2L59.4 63.7L54.9 63.2L50.3 63.9L45.7 62.5L41.1 62.6L36.6 63.1L32.0 63.5L27.4 62.5L22.9 63.1L18.3 62.6L13.7 62.6L9.1 63.2L4.6 63.3L1.0 64.0L0.7 59.4L0.3 54.9L0.5 50.3L1.3 45.7L0.1 41.1L0.1 36.6L1.0 32.0L0.4 27.4L0.9 22.9L0.8 18.3L0.5 13.7L1.6 9.1L0.3 4.6Z%22 fill=%22%23fff%22/%3E%3Ccircle cx=%2227.1%22 cy=%2215.3%22 r=%220.7%22 fill=%22%23000%22/%3E%3Ccircle cx=%2219.5%22 cy=%2223.9%22 r=%220.7%22 fill=%22%23000%22/%3E%3Ccircle cx=%2222.0%22 cy=%2235.3%22 r=%220.8%22 fill=%22%23000%22/%3E%3Ccircle cx=%229.7%22 cy=%227.5%22 r=%220.4%22 fill=%22%23000%22/%3E%3Ccircle cx=%2246.8%22 cy=%2238.5%22 r=%220.4%22 fill=%22%23000%22/%3E%3Ccircle cx=%2222.5%22 cy=%2213.9%22 r=%220.6%22 fill=%22%23000%22/%3E%3Ccircle cx=%226.4%22 cy=%2243.0%22 r=%220.8%22 fill=%22%23000%22/%3E%3Ccircle cx=%2257.5%22 cy=%2245.2%22 r=%220.9%22 fill=%22%23000%22/%3E%3Ccircle cx=%225.0%22 cy=%2220.2%22 r=%220.9%22 fill=%22%23000%22/%3E%3C/mask%3E%3Crect width=%2264%22 height=%2264%22 mask=%22url%28%23m%29%22/%3E%3C/svg%3E");
+    --paper-grain: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22320%22 height=%22320%22%3E%3Cfilter id=%22n%22 x=%220%22 y=%220%22 width=%22100%25%22 height=%22100%25%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%22.75%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3CfeColorMatrix values=%220 0 0 0 .12  0 0 0 0 .13  0 0 0 0 .12  0 0 0 .09 0%22/%3E%3C/filter%3E%3Cfilter id=%22f%22 x=%220%22 y=%220%22 width=%22100%25%22 height=%22100%25%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%22.012 .55%22 numOctaves=%222%22 seed=%228%22 stitchTiles=%22stitch%22/%3E%3CfeColorMatrix values=%220 0 0 0 .2  0 0 0 0 .2  0 0 0 0 .18  0 0 0 .05 -.01%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url%28%23n%29%22/%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url%28%23f%29%22/%3E%3C/svg%3E");
 }
 
-/* Add padding inside each experience card */
-#experiences .posts article {
-    padding: 2rem 1.25rem !important;
+:root {
+    --paper: #e8e6db;
+    --paper-light: #f1efe7;
+    --ink: #16191a;
+    --ink-soft: #2b3131;
+    --wash: #4d5756;
+    --mist: #b7c2bd;
+    --cinnabar: #b3261e;
+    --hairline: rgba(22, 25, 26, 0.22);
+
+    --font-brush: "Ma Shan Zheng", "KaiTi", "STKaiti", serif;
+    --font-formal: "Yuji Syuku", "Songti SC", "SimSun", Georgia, serif;
+    --font-body: "Kaisei Tokumin", "Noto Serif SC", Georgia, serif;
 }
 
-/* Remove white background in #main */
+/* =========================================================
+   GROUND — paper, grain, base type
+   ========================================================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body,
+body.is-preload {
+    background-color: var(--paper);
+    color: var(--ink-soft);
+}
+
+body, input, select, textarea {
+    font-family: var(--font-body);
+    font-weight: 400;
+    color: var(--ink-soft);
+}
+
+::selection {
+    background: var(--cinnabar);
+    color: var(--paper-light);
+}
+
+:focus-visible {
+    outline: 2px solid var(--cinnabar);
+    outline-offset: 3px;
+}
+
+#wrapper > .bg {
+    background-color: var(--paper);
+    background-image:
+        var(--paper-grain),
+        radial-gradient(60rem 40rem at 12% 18%, rgba(183, 194, 189, 0.30), transparent 70%),
+        radial-gradient(50rem 46rem at 92% 46%, rgba(183, 194, 189, 0.26), transparent 70%),
+        radial-gradient(64rem 40rem at 20% 78%, rgba(183, 194, 189, 0.24), transparent 70%);
+    background-size: 320px 320px, auto, auto, auto;
+    background-position: 0 0, 0 0, 0 0, 0 0;
+    background-repeat: repeat, no-repeat, no-repeat, no-repeat;
+    background-attachment: scroll;
+}
+
+/* Page-load veil: paper, not slate */
+#wrapper.fade-in:before {
+    background: var(--paper);
+}
+
+strong, b {
+    color: var(--ink);
+    font-weight: 700;
+}
+
+/* =========================================================
+   HEADINGS
+   ========================================================= */
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-formal);
+    font-weight: 400;
+    color: var(--ink);
+    text-transform: capitalize;
+    letter-spacing: 0.04em;
+}
+
+#main > .post header.major h2,
+#main > .posts > article header h2 {
+    font-family: var(--font-brush);
+    font-weight: 400;
+    font-size: clamp(2.6rem, 5.2vw, 4rem);
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+    margin: 0 0 0.6rem 0;
+    color: var(--ink);
+}
+
+#main > .posts > article header h2 {
+    font-size: clamp(2rem, 3.4vw, 2.8rem);
+}
+
+/* The rule under each title: one dry brush stroke */
+hr.section-divider {
+    border: 0;
+    height: 0.7rem;
+    width: min(15rem, 60%);
+    margin: 0.4rem auto 2.2rem auto;
+    background: var(--ink);
+    opacity: 0.88;
+    -webkit-mask: var(--brush-rule) center / 100% 100% no-repeat;
+            mask: var(--brush-rule) center / 100% 100% no-repeat;
+}
+
+/* =========================================================
+   INTRO — the painting
+   ========================================================= */
+
+#intro {
+    color: var(--ink);
+    justify-content: center;
+    padding-bottom: 14rem;
+    isolation: isolate;
+}
+
+/* mountains, sun and birds */
+#intro::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background: url("../../images/ink-mountains.svg") center bottom / cover no-repeat;
+    animation: ink-bleed 2.6s cubic-bezier(0.2, 0.6, 0.2, 1) both;
+}
+
+/* haze drifting along the valley floor */
+#intro::after {
+    content: "";
+    position: absolute;
+    left: -25%;
+    right: -25%;
+    bottom: 6%;
+    height: 34%;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(38% 46% at 22% 55%, rgba(232, 230, 219, 0.85), transparent 72%),
+        radial-gradient(34% 40% at 58% 62%, rgba(232, 230, 219, 0.75), transparent 72%),
+        radial-gradient(30% 44% at 86% 50%, rgba(232, 230, 219, 0.8), transparent 72%);
+    animation: mist-drift 46s ease-in-out infinite alternate;
+}
+
+@keyframes ink-bleed {
+    from { opacity: 0; filter: blur(16px); transform: scale(1.035); }
+    to   { opacity: 1; filter: blur(0);    transform: scale(1); }
+}
+
+@keyframes mist-drift {
+    from { transform: translateX(-7%); }
+    to   { transform: translateX(7%); }
+}
+
+#intro h1 {
+    font-family: var(--font-brush);
+    font-weight: 400;
+    font-size: clamp(3rem, 8.4vw, 7.5rem);
+    line-height: 1.05;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    color: var(--ink);
+    margin: 0;
+}
+
+#intro p {
+    font-family: var(--font-formal);
+    font-style: normal;
+    font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+    letter-spacing: 0.06em;
+    line-height: 1.6;
+    color: var(--wash);
+    margin: 0 0 1.1rem 0;
+}
+
+#intro a {
+    color: var(--ink);
+}
+
+/* The scroll-down control is the artist's seal */
+#intro ul.actions {
+    margin-top: 1.4rem;
+}
+
+#intro .button.icon.solo,
+#intro .button.icon.solo:hover {
+    width: 3.6rem;
+    height: 3.6rem;
+    line-height: 3.6rem;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: var(--cinnabar);
+    color: var(--paper-light) !important;
+    -webkit-mask: var(--seal-shape) center / 100% 100% no-repeat;
+            mask: var(--seal-shape) center / 100% 100% no-repeat;
+}
+
+#intro .button.icon.solo:before {
+    font-size: 1.05rem;
+    color: var(--paper-light);
+}
+
+#intro .button.icon.solo:hover {
+    background: var(--ink);
+}
+
+/* =========================================================
+   NAV — an ink band across the scroll
+   ========================================================= */
+
+#nav {
+    z-index: 3;
+    background: transparent;
+    overflow: visible;
+    color: var(--paper-light);
+    padding: 0 2rem 0 1rem;
+}
+
+#nav::before {
+    content: "";
+    position: absolute;
+    inset: 0 -1.5rem;
+    z-index: -1;
+    background: var(--ink);
+    -webkit-mask: var(--brush-band) center / 100% 100% no-repeat;
+            mask: var(--brush-band) center / 100% 100% no-repeat;
+}
+
+#nav ul.links {
+    font-family: var(--font-formal);
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: capitalize;
+}
+
+#nav ul.links li {
+    position: relative;
+}
+
+#nav ul.links li a {
+    font-size: 0.95rem;
+    padding: 0 1.6rem;
+    color: var(--paper-light);
+}
+
+#nav a,
+#nav ul.links li.active a {
+    color: var(--paper-light);
+    background: transparent;
+}
+
+#nav a:hover,
+#nav ul.links li a:hover,
+#nav ul.icons li a.icon:hover:before {
+    color: #e9a59f !important;
+}
+
+/* Portfolio sub-links drop below the band */
+#nav .dropdown-menu {
+    position: absolute;
+    bottom: 100%;
+    left: 0.4rem;
+    min-width: 12rem;
+    margin: 0;
+    padding: 0.5rem 0;
+    list-style: none;
+    line-height: 2.6rem;
+    background: var(--ink);
+    box-shadow: 0 1.2rem 2rem -1rem rgba(22, 25, 26, 0.55);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(0.4rem);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+
+/* set by wuxia.js when there is no room above the band */
+#nav .dropdown.drop-down .dropdown-menu {
+    bottom: auto;
+    top: 100%;
+}
+
+#nav .dropdown:hover .dropdown-menu,
+#nav .dropdown:focus-within .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+}
+
+#nav .dropdown-menu li a {
+    border-bottom: 0;
+    font-size: 0.88rem;
+    padding: 0 1.4rem;
+    white-space: nowrap;
+}
+
+/* Small-screen slide-out panel */
+#navPanelToggle {
+    color: var(--ink);
+    font-family: var(--font-formal);
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: capitalize;
+}
+
+#navPanelToggle.alt {
+    background-color: var(--ink);
+    color: var(--paper-light);
+    box-shadow: none;
+}
+
+#navPanelToggle.alt:hover {
+    background-color: var(--cinnabar);
+}
+
+#navPanel {
+    background: var(--ink);
+    color: var(--paper-light);
+}
+
+#navPanel .links li {
+    border-top-color: rgba(241, 239, 231, 0.14);
+}
+
+#navPanel .links li a,
+#navPanel a {
+    font-family: var(--font-formal);
+    font-weight: 400;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    text-transform: capitalize;
+    color: var(--paper-light);
+}
+
+#navPanel .dropdown-menu {
+    list-style: none;
+    margin: 0 0 0.5rem 0;
+    padding-left: 1.1rem;
+    border-left: 1px solid rgba(241, 239, 231, 0.25);
+}
+
+#navPanel .dropdown-menu li {
+    border-top: 0;
+}
+
+#navPanel .dropdown-menu li a {
+    font-size: 0.9rem;
+    padding: 0.35rem 0;
+    color: var(--mist);
+}
+
+#navPanel a:hover,
+#navPanel .close:hover {
+    color: #e9a59f !important;
+}
+
+#navPanel .close {
+    color: var(--mist);
+}
+
+#navPanel ul.icons.alt li .icon:before {
+    box-shadow: inset 0 0 0 1px rgba(241, 239, 231, 0.4);
+    color: var(--paper-light);
+}
+
+/* =========================================================
+   MAIN — one long sheet
+   ========================================================= */
+
 #main {
     background-color: transparent !important;
 }
 
-/* Hide chatbot by default */
-.chatbot-container iframe {
-    display: none;
+#main > * {
+    border-top: 0;
 }
 
-/* images */
-/* parent (span) */
-.special-img {
-    display: block;
-    width: min(100%, 50rem);
-    margin: 0 auto 2rem;
+#main > .post {
+    padding-top: 6.5rem;
+    padding-bottom: 3rem;
 }
 
+/* Running text */
+.post p,
+.posts article p,
+section p {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: var(--ink-soft);
+    text-align: left;
+}
+
+#main > .post > p {
+    max-width: 44rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+#main > .post header.major {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+#main > .post header.major p {
+    font-family: var(--font-body);
+    font-style: normal;
+    font-size: 1.1rem;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    max-width: 40rem;
+    margin: 0 auto 0.9rem auto;
+    color: var(--ink-soft);
+    text-align: center;
+}
+
+/* Where a second header.major is used to hold body copy, read it as prose */
+#main > .post header.major ~ header.major p {
+    text-align: left;
+    margin-bottom: 1.5rem;
+}
+
+/* A section that is only a title (Project Showcase) sits close to what it introduces */
+#main > #projects-show {
+    padding-bottom: 0;
+}
+
+#main > #projects-show header.major {
+    margin-bottom: 1rem;
+}
+
+/* Links: ink text, cinnabar underline */
+.post p a,
+.post header p a,
+section p a {
+    color: var(--ink) !important;
+    border-bottom: 1px solid var(--cinnabar) !important;
+    transition: color 0.2s ease;
+}
+
+.post p a:hover,
+.post header p a:hover,
+section p a:hover {
+    color: var(--cinnabar) !important;
+}
+
+/* =========================================================
+   IMAGES — mounted like album leaves
+   ========================================================= */
+
+.special-img,
 .smaller-img {
     display: block;
-    width: min(100%, 25rem);
-    margin: 0 auto 2rem;
+    margin: 0 auto 2.5rem;
 }
 
-/* child (image) */
+.special-img { width: min(100%, 46rem); }
+.smaller-img { width: min(100%, 25rem); }
+
+.image.fit {
+    margin: 0 auto 2.5rem auto;
+    border-radius: 0;
+}
+
+.image.fit img,
 .special-img img,
 .smaller-img img {
     display: block;
     width: 100%;
     height: auto;
-    border-radius: 6px;
+    border-radius: 0;
+    padding: 0.55rem;
+    background: var(--paper-light);
+    border: 1px solid var(--hairline);
+    box-shadow: 0 1.6rem 2.2rem -1.6rem rgba(22, 25, 26, 0.45);
 }
 
-/* Embedded resume */
+/* Embedded resume + chatbot */
 .resume-embed {
     display: block;
     width: 100%;
     height: 80vh;
     min-height: 36rem;
-    margin: 0 0 2rem;
-    border: 1px solid rgba(255, 230, 200, 0.15);
-    border-radius: 6px;
-    background: #ffffff;
+    margin: 0 0 2.5rem;
+    padding: 0.55rem;
+    border: 1px solid var(--hairline);
+    border-radius: 0;
+    background: var(--paper-light);
+    box-shadow: 0 1.6rem 2.2rem -1.6rem rgba(22, 25, 26, 0.45);
 }
 
 @media screen and (max-width: 736px) {
@@ -68,150 +524,148 @@
     }
 }
 
-/* Chatbot container visual style */
+.chatbot-container iframe {
+    display: none; /* shown by the "Talk to YingBot" button */
+}
+
 #chatbot .chatbot-container {
     margin-top: 1.5rem;
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Divider strip */
-.section-divider {
+#chatbot .chatbot-container iframe {
+    border: 1px solid var(--hairline);
+    background: var(--paper-light);
+}
+
+/* =========================================================
+   CARDS — experience entries and project leaves
+   ========================================================= */
+
+.posts,
+#main > .posts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+    width: auto;
+    text-align: left;
+}
+
+#main > .posts {
+    padding: 2.5rem 4rem 4rem 4rem;
+}
+
+#experiences .posts + .posts {
+    margin-top: 1.5rem;
+}
+
+.posts > article,
+#main > .posts > article,
+#main > .posts > article:nth-child(n) {
+    width: auto;
+    margin: 0;
+    padding: 2rem 2rem 1.9rem 2rem;
+    text-align: left;
     border: 0;
-    height: 1px;
-    width: 60%;
-    margin: 1.5rem auto 2rem auto;
-    background: linear-gradient(
-        to right,
-        rgba(255,230,200,0),
-        rgba(255,230,200,0.35),
-        rgba(255,230,200,0)
-    )
+    --c: var(--ink);
+    background:
+        linear-gradient(var(--c), var(--c)) left top / 1.1rem 1.5px no-repeat,
+        linear-gradient(var(--c), var(--c)) left top / 1.5px 1.1rem no-repeat,
+        linear-gradient(var(--c), var(--c)) right top / 1.1rem 1.5px no-repeat,
+        linear-gradient(var(--c), var(--c)) right top / 1.5px 1.1rem no-repeat,
+        linear-gradient(var(--c), var(--c)) left bottom / 1.1rem 1.5px no-repeat,
+        linear-gradient(var(--c), var(--c)) left bottom / 1.5px 1.1rem no-repeat,
+        linear-gradient(var(--c), var(--c)) right bottom / 1.1rem 1.5px no-repeat,
+        linear-gradient(var(--c), var(--c)) right bottom / 1.5px 1.1rem no-repeat,
+        rgba(241, 239, 231, 0.62);
+    box-shadow: inset 0 0 0 1px rgba(22, 25, 26, 0.09);
+    transition: box-shadow 0.25s ease;
+}
+
+.posts > article:hover {
+    --c: var(--cinnabar);
+    box-shadow: inset 0 0 0 1px rgba(179, 38, 30, 0.28);
+}
+
+.posts article header {
+    margin-bottom: 1rem;
+}
+
+.posts article h4 {
+    font-family: var(--font-formal);
+    font-size: 1.3rem;
+    line-height: 1.3;
+    letter-spacing: 0.05em;
+    color: var(--ink);
+    margin: 0 0 0.45rem 0;
+}
+
+#experiences article p {
+    margin: 0 0 0.35rem 0;
+    line-height: 1.6;
+}
+
+#experiences article > p {
+    margin: 0 0 1.1rem 0;
+    font-size: 1rem;
+}
+
+/* Project leaves keep their centred title and button */
+#main > .posts > article header,
+#main > .posts > article ul.actions {
+    text-align: center;
+}
+
+#main > .posts > article .image.fit {
+    margin-bottom: 1.25rem;
+}
+
+#main > .posts > article p {
+    font-size: 1rem;
+    line-height: 1.75;
+}
+
+@media screen and (max-width: 980px) {
+    #main > .posts { padding: 2rem 2.5rem 3rem 2.5rem; }
+}
+
+@media screen and (max-width: 736px) {
+    .posts,
+    #main > .posts {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    #main > .posts { padding: 1.5rem 2rem 2rem 2rem; }
+    .posts > article,
+    #main > .posts > article,
+    #main > .posts > article:nth-child(n) { padding: 1.6rem 1.4rem; }
+}
+
+/* Skill tags: small slips with a hairline edge */
+.skill-tags {
+    margin-top: 0.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.skill-tag {
+    padding: 0.18rem 0.65rem;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    line-height: 1.5;
+    letter-spacing: 0.03em;
+    color: var(--wash);
+    border: 1px solid rgba(22, 25, 26, 0.3);
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.skill-tag:hover {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--paper-light);
 }
 
 /* =========================================================
-   BACKGROUND + TEXTURES
-   ========================================================= */
-
-#wrapper {
-    background-image:
-        url("../../images/overlay.png"),
-        linear-gradient(180deg, rgba(0,0,0,0.4), rgba(0,0,0,0.6)),
-        url("../../images/wuxia_texture.JPG");
-    background-blend-mode: normal, multiply, normal, overlay;
-}
-
-/* Music visualizer */
-/* #music-visualizer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 120px;
-    pointer-events: none;
-    opacity: 0.25;
-    z-index: 10;
-} */
-
-/* =========================================================
-   TYPOGRAPHY — WUXIA HEADERS & BODY TEXT
-   ========================================================= */
-
-/* Brush-stroke style headings */
-#wrapper h1, 
-#wrapper h2, 
-#wrapper h3,
-.post header.major h2,
-.post header.major h3,
-#intro h1,
-#intro h2,
-header h1,
-header h2,
-li {
-    font-family: "KaiTi", "STKaiti", "SimSun", serif;
-    letter-spacing: 1px;
-    font-weight: 600;
-    background-image: linear-gradient(
-        to right,
-        rgba(255,230,200,0.9),
-        rgba(255,230,200,0.6)
-    );
-    -webkit-background-clip: text;
-    color: transparent;
-}
-
-/* Solid opaque text for Intro only */
-#intro h1,
-#intro h2,
-#intro p {
-    background-image: none !important;
-    -webkit-background-clip: border-box !important;
-    color: #ffffff !important;
-    text-shadow:
-        -2px -2px 0 #000,
-         2px -2px 0 #000,
-        -2px  2px 0 #000,
-         2px  2px 0 #000;
-}
-
-/* Wuxia body text */
-.post p,
-.posts article p,
-section p {
-    color: rgba(255, 235, 220, 0.92);
-    font-size: 1.05rem;
-    line-height: 1.7;
-    font-family: "Noto Serif SC", "KaiTi", serif;
-}
-
-/* =========================================================
-   PANELS (Posts, Featured posts, Cards)
-   ========================================================= */
-
-.post,
-.posts article,
-.post.featured {
-    background: rgba(20, 20, 20, 0.55);
-    border: 1px solid rgba(255, 230, 200, 0.08);
-    border-radius: 8px;
-
-    box-shadow:
-        0 0 25px rgba(0, 0, 0, 0.5),
-        inset 0 0 35px rgba(0, 0, 0, 0.45),
-        0 0 10px rgba(255, 200, 150, 0.15);
-
-    backdrop-filter: blur(4px);
-
-    background-image:
-        url("../images/wuxia_texture0.png"),
-        linear-gradient(
-            180deg,
-            rgba(0, 0, 0, 0.35),
-            rgba(0, 0, 0, 0.55)
-        );
-    background-blend-mode: overlay, normal;
-}
-
-.post:hover,
-.posts article:hover,
-.post.featured:hover {
-    box-shadow:
-        0 0 35px rgba(255, 200, 150, 0.25),
-        inset 0 0 40px rgba(255, 200, 150, 0.12);
-    transform: translateY(-3px);
-    transition: 0.3s ease;
-}
-
-/* Fix padding on major headers */
-.post header.major {
-    padding-top: 1rem !important;
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-}
-
-/* =========================================================
-   BUTTONS — Wuxia Gold Gradient Buttons
+   BUTTONS — a single loaded stroke
    ========================================================= */
 
 .button,
@@ -220,124 +674,133 @@ ul.actions.special li a.button,
 button,
 input[type="button"],
 input[type="submit"] {
-    background: linear-gradient(145deg, #6b552e, #42351b) !important;
-    border-color: rgba(255, 210, 120, 0.75) !important;
-    color: rgba(255, 245, 230, 1) !important;
-
-    padding: 0.75rem 2.25rem !important;
-    border-radius: 6px;
-    font-family: "Noto Serif SC", "KaiTi", serif !important;
-    font-size: 1rem !important;
-    letter-spacing: 0.5px;
-
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-
-    box-shadow:
-        0 0 12px rgba(0, 0, 0, 0.35),
-        inset 0 0 18px rgba(0, 0, 0, 0.45),
-        0 0 10px rgba(255, 200, 150, 0.15);
-
-    transition: 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 3.3rem;
+    line-height: 1.2;
+    padding: 0 2.8rem;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none !important;
+    background: var(--ink);
+    color: var(--paper-light) !important;
+    font-family: var(--font-formal);
+    font-weight: 400;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    text-transform: capitalize;
+    cursor: pointer;
+    -webkit-mask: var(--brush-button) center / 100% 100% no-repeat;
+            mask: var(--brush-button) center / 100% 100% no-repeat;
+    transition: background-color 0.25s ease;
 }
 
-/* Hover glow */
 .button:hover,
-ul.actions.special li a.button:hover {
-    box-shadow:
-        0 0 18px rgba(255, 200, 150, 0.35),
-        inset 0 0 25px rgba(255, 200, 150, 0.25);
-    transform: translateY(-3px);
+.button.large:hover,
+ul.actions.special li a.button:hover,
+button:hover {
+    background: var(--cinnabar);
+    color: var(--paper-light) !important;
+    box-shadow: none !important;
+}
+
+.button:focus-visible {
+    background: var(--cinnabar);
+}
+
+ul.actions.special {
+    margin-bottom: 2.5rem;
 }
 
 /* =========================================================
-   FOOTER STYLING
+   FOOTER — the scroll ends in full ink
    ========================================================= */
 
 #footer {
-    background: rgba(20, 20, 20, 0.55) !important;
-    border: 1px solid rgba(255, 230, 200, 0.1) !important;
-    border-radius: 8px;
-    backdrop-filter: blur(3px);
-
-    box-shadow:
-        0 0 25px rgba(0, 0, 0, 0.5),
-        inset 0 0 25px rgba(0, 0, 0, 0.45),
-        0 0 12px rgba(255, 200, 150, 0.15);
+    width: 100%;
+    max-width: none;
+    margin-top: 9rem;
+    padding: 1rem max(2rem, calc((100% - 72rem) / 2)) 0;
+    background: var(--ink);
+    color: var(--mist);
 }
 
-#footer h3,
+#footer::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: calc(100% - 1px);
+    height: clamp(4rem, 9vw, 8rem);
+    background: url("../../images/ink-ridge.svg") center bottom / 100% 100% no-repeat;
+    pointer-events: none;
+}
+
+/* the contact row has an empty leading cell; let the three real ones centre */
+#footer > section.split.contact {
+    display: none;
+}
+
+#footer > section {
+    flex: 1 1 0;
+    border-left: 0;
+    text-align: center;
+}
+
+#footer h3 {
+    font-family: var(--font-formal);
+    color: var(--paper-light);
+    letter-spacing: 0.12em;
+}
+
 #footer p,
 #footer a {
-    color: rgba(255, 235, 220, 0.95) !important;
-    font-family: "Noto Serif SC", "KaiTi", serif;
+    font-family: var(--font-body);
+    color: var(--mist);
+    text-align: center;
+}
+
+#footer > section,
+#footer > section > section {
+    border-color: rgba(241, 239, 231, 0.12) !important;
 }
 
 #footer ul.icons.alt li .icon:before {
-    box-shadow: inset 0 0 0 2px rgba(255, 230, 200, 0.25) !important;
+    box-shadow: inset 0 0 0 1px rgba(241, 239, 231, 0.4);
+    color: var(--paper-light);
 }
 
-/* Make paragraph links white/warm colored */
-.post p a,
-.post header p a,
-section p a {
-    color: rgba(255, 235, 220, 0.92) !important;
-    border-bottom-color: rgba(255, 235, 220, 0.5) !important;
+#footer ul.icons.alt li a.icon:hover:before {
+    box-shadow: inset 0 0 0 1px var(--cinnabar);
+    background: var(--cinnabar);
+    color: var(--paper-light) !important;
 }
 
-.post p a:hover,
-.post header p a:hover,
-section p a:hover {
-    color: rgba(255, 245, 230, 1) !important;
-    border-bottom-color: rgba(255, 245, 230, 0.75) !important;
+#copyright {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 2.5rem 2rem 4rem;
+    background: var(--ink);
+    color: rgba(183, 194, 189, 0.6);
+    font-family: var(--font-formal);
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: none;
 }
 
-/* ================================
-    SKILL TAGS
-   ================================ */
-
-.skill-tags {
-    margin-top: 0.75rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+#copyright ul {
+    margin: 0;
 }
 
-.skill-tag {
-    padding: 0.35rem 0.9rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    letter-spacing: 0.5px;
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
 
-    background: linear-gradient(135deg, #8a6a3a, #4a3a22);
-    border: 1px solid rgba(255, 220, 160, 0.6);
-
-    color: rgba(255, 245, 230, 0.95);
-    font-family: "Noto Serif SC", "KaiTi", serif;
-
-    box-shadow:
-        0 0 8px rgba(0, 0, 0, 0.4),
-        inset 0 0 6px rgba(0, 0, 0, 0.35);
-
-    transition: 0.25s ease;
-}
-
-.skill-tag:hover {
-    transform: translateY(-2px);
-    box-shadow:
-        0 0 12px rgba(255, 220, 160, 0.45),
-        inset 0 0 10px rgba(0, 0, 0, 0.4);
-}
-
-.posts article h4 {
-    font-family: "KaiTi", serif;
-    font-weight: 600;
-    background-image: linear-gradient(
-        to right,
-        rgba(255,230,200,0.9),
-        rgba(255,230,200,0.6)
-    );
-    -webkit-background-clip: text;
-    color: transparent;
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    #intro::before,
+    #intro::after { animation: none; }
+    #nav .dropdown-menu { transition: none; }
 }
